@@ -1,0 +1,112 @@
+<div class="my-container mx-auto">
+
+    <section class="m-3 p-4 border border-dark my-rounded-corner">
+        <h4 class="w-25 border border-secondary text-center py-2 my-rounded-corner">Payment Info</h4>
+        <table class="table w-50 mx-auto table-bordered table-hover my-shadow">
+            <tbody>
+                <tr>
+                    <td>Total Items</td>
+                    <td class="fs-5 fw-bold">{{usersCart.cartItems.length}}</td>
+                </tr>
+                <tr>
+                    <td>Total Price</td>
+                    <td class="fs-5 fw-bold text-danger"> {{usersPaymentInfo.totalAmount}} </td>
+                </tr>
+                <tr>
+                    <td>Shipping Charges</td>
+                    <td class="fs-5 fw-bold text-danger">{{usersPaymentInfo.shipingCharges}}</td>
+                </tr>
+                <tr>
+                    <td>Discount</td>
+                    <td class="fs-5 fw-bold text-success">{{usersPaymentInfo.amountReduced}}</td>
+                </tr>
+                <tr>
+                    <td>You Have to Pay</td>
+                    <td class="fs-5 fw-bold text-success">{{usersPaymentInfo.amountPaid}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="m-3 p-4 border border-dark my-rounded-corner">
+        <h4 class="w-25 border border-secondary text-center py-2 my-rounded-corner">Payment Method</h4>
+        <div class="d-flex justify-content-center align-items-center">
+            <h5 class="me-4">Select any Method</h5>
+            <select class="form-select w-25" [formControl]="selectedPaymentMethod">
+                <option value="0">Open this select menu</option>
+                <option *ngFor="let paymentMethod of paymentMethods" value="{{paymentMethod.id}}">
+                    {{paymentMethod.type}}
+                    <span *ngIf="paymentMethod.provider !== ''">{{" - "+paymentMethod.provider}}</span>
+                </option>
+            </select>
+        </div>
+    </section>
+
+    <section class="m-3 p-4 border border-dark my-rounded-corner">
+        <h4 class="w-25 border border-secondary text-center py-2 my-rounded-corner">Proceed to Payments</h4>
+        <div class="mt-4 w-50" *ngIf="selectedPaymentMethodName !== ''">
+            <table class="table table-bordered my-shadow">
+                <thead>
+                    <tr>
+                        <td>You have to Pay</td>
+                        <td> {{usersPaymentInfo.amountPaid}} </td>
+                    </tr>
+                    <tr>
+                        <td>Payment Method</td>
+                        <td> {{this.getPaymentMethod(selectedPaymentMethodName)}} </td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td *ngIf="true"> {{address}} </td>
+                    </tr>
+                    <tr>
+                        <td>Mobile Number</td>
+                        <td *ngIf="true"> {{mobileNumber}} </td>
+                    </tr>
+                </thead>
+            </table>
+
+            <div class="d-grid w-50">
+                <button type="button" class="btn btn-outline-success mb-4" (click)="placeOrder()">
+                    Pay
+                </button>
+            </div>
+
+            <div class="processing">
+                <div class="spinner-border me-4" role="status" *ngIf="displaySpinner">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <h6 class="m-0" [ngClass]="classname"> {{message}} </h6>
+            </div>
+        </div>
+    </section>
+
+    <div *ngIf="!false" class="pt-4">
+        <h2></h2>
+    </div>
+</div>
+
+
+<div class="mt-5 p-4 border my-rounded-corner">
+  <h3 class="w-25 border text-center py-2 mb-5 my-rounded-corner">Previous Orders</h3>
+
+  <div class="card mb-5" *ngFor="let cart of usersPreviousCarts">
+      <div class="card-header d-flex fw-bold justify-content-between align-items-center">
+          <span class="time">Ordered On :
+              <span class="fs-5">{{cart.orderedOn | date:"dd-MMM-YYYY"}}</span>
+          </span>
+          <span class="count">Items: {{cart.cartItems.length}}</span>
+          <span class="price">Price Paid :
+              <span class="fs-5"> {{utilityService.calculatePricePaid(cart)}} </span>
+          </span>
+      </div>
+
+      <div class="cart-body px-4 py-2">
+          <div class="row g-0">
+              <div class="col-2 px-2 py-2" *ngFor="let cartItem of cart.cartItems">
+                  <app-product [view]="'prevcartitem'" [product]="cartItem.product"></app-product>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
