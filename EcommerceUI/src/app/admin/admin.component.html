@@ -1,0 +1,100 @@
+  <meta charset="utf-8">
+  <title>Bulk_Buyers: Admin</title>
+  <link rel="stylesheet" type="text/css" href="admin.component.css">
+
+<body>
+
+    <div class="center">
+      <div class="login-root">
+        <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+          <div class="loginbackground box-background--white padding-top--64">
+
+          </div>
+          <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+            <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+              <h1><a href="welcome" rel="dofollow">Bulk Buyers</a></h1>
+            </div>
+            <div class="formbg-outer">
+              <div class="formbg">
+                <div class="formbg-inner padding-horizontal--48">
+                  <span class="padding-bottom--15"><b> Update Product </b> </span>
+                  <div>
+                    <div class="women_section layout_padding">
+                     <div class="col-4">
+                         <h4 class="fw-bold text-danger" *ngIf="valid == 'invalid'" >Check Product Details Once again</h4>
+                  <br>
+                         <h4 class="animate-charcter" *ngIf=" valid == 'valid'" > <div class="card">  Product Price and Quantity updated <b class="branding_watermark"> Sucessfully .</b>  <br>  Check Product Once again.</div>
+                         <br>
+                          <a href="product-details?id={{updateProduct.id}}">
+                             <img src="http://www.dbs-cardgame.com/images/community/galaxy_promotion02/img_04.png" alt=""> <button> Check Here !</button> </a>
+                         </h4>
+                         <h4 class="animate-charcter" *ngIf=" valid == 'valid'">
+                          <br>
+                          <table border="2px" >
+                            <tr>
+                              <th>| Product ID | </th>
+                              <th> &nbsp; Product Price | </th>
+                              <th> &nbsp; Product Quantity | </th>
+                            </tr>
+                            <tr>
+                              <td>{{updateProduct.id}}</td>
+                              <td>{{updateProduct.price}}</td>
+                              <td>{{updateProduct.quantity}}</td>
+                            </tr>
+                          </table>
+                        </h4>
+                         <form #form="ngForm" (ngSubmit)="Product()" *ngIf="valid == 'invalid' || valid == ''"  >
+                             <div class="mb-3" >
+                                 <i class="fa-regular fa-credit-card me-2"></i>
+                                 <label for="productID" class="form-label">Product ID </label>
+
+                                 <input  type="password && number"  (ngModelChange)="onChange($event)" minlength="2" maxlength="2" class="form-control" id="productID"
+                                   name="productId"  placeholder="000" [(ngModel)]="updateProduct.id "  required>
+
+                                </div>
+
+                             <div class="mb-3">
+                               <i class="fas fa-regular fa-lock me-2"></i>
+                               <label for="ProductPrice" class="form-label">Product Price</label>
+                               <input type="number" class="form-control" id="ProductPrice"  name="ProductPrice" placeholder="00000"[(ngModel)]="updateProduct.price" (ngModelChange)="onChange($event)"  required>
+                           </div>
+                             <div class="mb-3">
+                                 <i class="fa-solid fa-coins me-2"></i>
+                                 <label for="ProductQuantity" class="form-label me-2">Product Quantity</label>
+                                 <input  type="number" class="form-control" id="Product Quantity"  name="ProductQuantity" placeholder="000" [(ngModel)]="updateProduct.quantity" required>
+                             </div>
+
+                             <button  type="submit" class="btn btn-primary btn-hover color-5">Submit</button>
+                         </form>
+                     </div>
+                   </div>
+
+
+                   </div>
+                </div>
+              </div>
+              <div class="footer-link padding-top--24">
+
+                <div class=" footer center-center">
+
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+<div class="card">
+  <footer class="footer">
+    <div class="center"> <b>
+      <br> <span><a href="#">© BulkBuyers</a></span>
+    </b>
+
+
+</div>

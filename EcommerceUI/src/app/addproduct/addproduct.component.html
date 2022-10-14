@@ -1,0 +1,84 @@
+  <div class="center">
+    <div class="login-root">
+      <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+        <div class="loginbackground box-background--white padding-top--64">
+        </div>
+        <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+          <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+            <h1><a href="welcome" rel="dofollow">Bulk Buyers</a></h1>
+          </div>
+          <div class="formbg-outer">
+            <div class="formbg">
+              <div class="formbg-inner padding-horizontal--48">
+                <span class="padding-bottom--15"><b> Update Product </b> </span>
+                <div>
+                  <div class="women_section layout_padding">
+                   <div class="col-4">
+                       <h4 class="fw-bold text-danger" *ngIf="valid == 'invalid'" >Check Product Details Once again</h4>
+                <br>
+                       <h4 class="animate-charcter" *ngIf=" valid == 'valid'" > <div class="card">  Category and SubCategories <b class="branding_watermark">Added Sucessfully .</b>  <br>  Check Category Once again.</div>
+                       <br>
+                        <a href="products?category={{category.Category}}&subcategory={{category.SubCategories}}">
+                           <img src="http://www.dbs-cardgame.com/images/community/galaxy_promotion02/img_04.png" alt=""> <button> Check Here !</button> </a>
+                       </h4>
+                       <h4 class="animate-charcter" *ngIf=" valid == 'valid'">
+                        <br>
+
+                      </h4>
+                      <form #form="ngForm" (ngSubmit)="AddCat()" *ngIf="valid == 'invalid' || valid == ''"  >
+                        <div class="mb-3" >
+      <i class="fa-regular fa-credit-card me-2"></i>
+      <label for="Category" class="form-label">Category </label>
+
+      <input  type="text"    class="form-control" id="Category"
+        name="Category"  placeholder="!CategoryName" [(ngModel)]="category.Category "  required>
+
+     </div>
+
+  <div class="mb-3">
+    <i class="fas fa-regular fa-lock me-2"></i>
+    <label for="SubCategory" class="form-label">SubCategory</label>
+    <input type="text" class="form-control" id="SubCategory"  name="SubCategory"
+     placeholder="!SubCategoryName"[(ngModel)]="category.SubCategories"   required>
+</div>
+
+
+  <button  type="submit" class="btn btn-primary btn-hover color-5">Submit</button>
+</form>
+
+                   </div>
+                 </div>
+
+
+                 </div>
+              </div>
+            </div>
+            <div class="footer-link padding-top--24">
+
+              <div class=" footer center-center">
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="card">
+<footer class="footer">
+  <div class="center"> <b>
+    <br> <span><a href="#">© BulkBuyers</a></span>
+  </b>
+
+
+</div>
+
+
+
+
