@@ -1,0 +1,122 @@
+
+  <div  *ngIf="utilityService.isLoggedIn()" >
+    <div class="student-profile py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card shadow-sm">
+              <div class="card-header bg-transparent text-center" >
+                <img class="profile_img" src="../../assets/Images/{{Details.id}}.jpg" alt="">
+                <h6>
+                  <span><div *ngIf="checkid == 1">
+
+                    Welcome Back Admin  <br> Admin Id :  {{Details.id}}
+
+
+                  </div>
+
+                      {{Details.firstName}} {{Details.lastName}} </span>
+                  <br>
+                  <br>
+                  <h5>Account Created on {{Details.createdAt}} </h5>
+
+
+
+                </h6>
+
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="card shadow-sm">
+              <div class="card-header bg-transparent border-0">
+                <h3 class="mb-0"><i class="far fa-clone pr-1"></i>User Details</h3>
+              </div>
+              <div class="card-body pt-0">
+                <table class="table table-bordered">
+                  <tr>
+                    <th width="30%">Name </th>
+                    <td width="2%">:</td>
+                    <td>{{Details.firstName}} {{ Details.lastName}}</td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Account ID</th>
+                    <td width="2%">:</td>
+                    <td>
+                      <div *ngIf="checkid == 1">
+                      {{Details.id}}
+                      &nbsp; <b>Admin & User</b>
+                      <br>
+                     <button   type="button" routerLink="/admindashboard" routerLinkActive="active" ariaCurrentWhenActive="page">Admin Work</button>
+                     &nbsp;Checkin Admin pages
+                  </div>
+                  <div *ngIf="checkid != 1">
+                    {{Details.id}}
+                  </div>
+                </td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Email	</th>
+                    <td width="2%">:</td>
+                    <td>{{Details.email}}</td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Address</th>
+                    <td width="2%">:</td>
+                    <td>{{Details.address}}</td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Account Created</th>
+                    <td width="2%">:</td>
+                    <td>{{Details.createdAt}}</td>
+                  </tr>
+
+                </table>
+                <div class="card-body" >
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+    <div class="cardDetails">
+      <h3>  &nbsp; <i>Previous Purchase </i> </h3>
+      <br>
+      <div  *ngFor="let cart of usersPreviousCarts">
+       <b>  &nbsp; &nbsp;Ordered On &nbsp;: &nbsp;</b>{{cart.orderedOn | date:"dd-MMM-YYYY"}}
+       &nbsp;<b>Items&nbsp;:&nbsp;</b> {{cart.cartItems.length}}
+       &nbsp;<b>Price &nbsp;:&nbsp;</b> {{utilityService.calculatePricePaid(cart)}}
+
+      </div>
+    </div>
+  </div>
+
+<!-- <div *ngIf="checkid == 1">
+\
+   you need to check admin id jeeva and check another user as welll
+
+<br>
+<h1>
+
+</h1>
+</div> -->
+
+
+<div *ngIf="checkid == 1">
+  <div class="btn-group btn-group-lg me-2" role="group">
+     <button (click)="refresh()" type="button" routerLink="/admin"
+     *ngIf="!utilityService.isLoggedIn()">Admin Work</button>
+  </div>
+
+</div>
+
+
+
