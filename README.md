@@ -1,5 +1,5 @@
 # Ecommerce-website
-Here I am Create a Dynamic Website  for Ecommerce Website.
+Here I am Create a Dynamic  Ecommerce Website.
 
 ### Ecommerece Management System 
 
